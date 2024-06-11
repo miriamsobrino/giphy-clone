@@ -47,6 +47,10 @@ const Header = () => {
     setShowCategoriesMobile(!showCategoriesMobile);
   };
 
+  const hideMenuMobile = () => {
+    setShowCategoriesMobile(false);
+  };
+
   return (
     <header className='sticky top-0 z-50 pt-2 bg-background'>
       <nav className='relative flex justify-between items-center text-left  mb-4'>
@@ -79,15 +83,16 @@ const Header = () => {
             <AlignRight className='text-sky-500' />
           </button>
           {showCategoriesMobile && (
-            <div className='lg:hidden absolute top-14 left-0 h-screen right-0 '>
-              <div className='absolute top-0 gradient-2 w-full  px-10 pt-6 pb-9 z-50 '>
+            <div className='lg:hidden  absolute top-14 left-0 h-screen right-0 '>
+              <div className='absolute  top-0 gradient-2 w-full  px-10 pt-6 pb-9 z-50 '>
                 <h3 className='text-2xl font-extrabold mb-2'>Categories</h3>
-                <ul>
+                <ul className='columns-2 '>
                   {categories.map((category, index) => (
                     <li key={index}>
                       <Link
-                        className='py-2 text-base font-bold active:opacity-80'
+                        className='py-2 flex columns-2 text-base font-bold active:opacity-80'
                         to={category.name_encoded}
+                        onClick={hideMenuMobile}
                       >
                         {category.name}
                       </Link>

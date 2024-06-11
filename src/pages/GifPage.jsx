@@ -181,7 +181,7 @@ const GifPage = () => {
               </div>
               <div className=' flex items-start gap-9 justify-center lg:flex-col lg:gap-6 mb-4'>
                 <div className='flex gap-2 transform transition-transform duration-300 hover:scale-110 cursor-pointer'>
-                  <img src='./favorite.svg' />
+                  <img src='./public/favorite.svg' />
                   <span className='font-bold text-gray-300 '>Favorite</span>
                 </div>
                 <div

@@ -7,37 +7,40 @@ import CategoryPage from './pages/CategoryPage';
 import GifPage from './pages/GifPage';
 import GifProvider from './context/context';
 
-const router = createBrowserRouter([
-  {
-    element: <AppLayout />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/:category',
-        element: <CategoryPage />,
-      },
-      {
-        path: '/:type/:slug',
-        element: <GifPage />,
-      },
-      {
-        path: '/:category/:type/:slug',
-        element: <GifPage />,
-      },
-      {
-        path: '/search/:query',
-        element: <SearchPage />,
-      },
-      {
-        path: '/search/:query/:type/:slug',
-        element: <GifPage />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      element: <AppLayout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/:category',
+          element: <CategoryPage />,
+        },
+        {
+          path: '/:type/:slug',
+          element: <GifPage />,
+        },
+        {
+          path: '/:category/:type/:slug',
+          element: <GifPage />,
+        },
+        {
+          path: '/search/:query',
+          element: <SearchPage />,
+        },
+        {
+          path: '/search/:query/:type/:slug',
+          element: <GifPage />,
+        },
+      ],
+    },
+  ],
+  { basename: '/giphy-clone' }
+);
 function App() {
   return (
     <GifProvider>

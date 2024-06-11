@@ -25,7 +25,7 @@ const FiltersGif = ({ showTrending = false }) => {
   return (
     <div className='flex justify-center items-center gap-6 py-4 md:justify-between lg:justify-between'>
       {showTrending && (
-        <span className='flex gap-2'>
+        <span className='hidden lg:flex gap-2'>
           <TrendingUp className='text-teal-400' />
           <span className='text-gray-300 font-semibold'>Trending</span>
         </span>

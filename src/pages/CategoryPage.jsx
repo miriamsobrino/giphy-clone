@@ -26,7 +26,7 @@ const CategoryPage = () => {
   };
   return (
     <section className='flex flex-col gap-8 mt-4 sm:flex-row '>
-      <div className='flex flex-col gap-2'>
+      <div className='hidden lg:flex flex-col gap-2'>
         {categoryResults.length > 0 && <Gif gif={categoryResults[0]} />}
         <span className='text-gray-300 text-xs mt-2'>
           Don&apos;t tell it to me, GIF it to me!
