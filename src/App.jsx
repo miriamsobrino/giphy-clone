@@ -44,7 +44,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/giphy-clone' }
+  { basename: '/giphy-clone/' }
 );
 function App() {
   return (
