@@ -59,11 +59,11 @@ const Header = () => {
             <h1 className='text-5xl font-bold'>GIPHY</h1>
           </Link>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 items-center '>
           {categories?.slice(0, 5).map((category) => (
             <Link
               key={category.name}
-              className='p-2 border-b-4 border-sky-500 font-bold hidden  hover:gradient-0 lg:block'
+              className='p-2 border-b-4 border-sky-500 font-bold hidden hover:gradient-0 lg:block'
               to={category.name_encoded}
             >
               {category.name}
@@ -78,7 +78,7 @@ const Header = () => {
             <EllipsisVertical />
           </button>
           <Link to='/favorites' className='gradient-1 p-1 rounded-sm '>
-            <button className='bg-background p-2 font-bold text-base hover:gradient-1 flex gap-2 items-center'>
+            <button className='bg-background p-2 font-bold text-base hover:gradient-1 flex gap-2 items-center scale-1 hover:scale-4'>
               <Heart size={20} fill={'currentColor'} />
               Favorites
             </button>

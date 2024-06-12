@@ -88,6 +88,7 @@ const GifPage = () => {
     } else {
       setFavorites([...favorites, gifToAdd]);
     }
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
   return (
     <div className='mt-6  '>

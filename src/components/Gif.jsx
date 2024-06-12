@@ -29,8 +29,11 @@ const Gif = ({ gif, hover = true, onClick }) => {
         (favGif) => favGif.id !== gifToAdd.id
       );
       setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } else {
-      setFavorites([...favorites, gifToAdd]);
+      const newFavorites = [...favorites, gifToAdd];
+      setFavorites(newFavorites);
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
     }
   };
 
@@ -66,6 +69,7 @@ const Gif = ({ gif, hover = true, onClick }) => {
                       ? 'currentColor'
                       : 'none'
                   }
+                  className='transition-transform duration-300 hover:scale-110'
                 />
               </button>
               <button
@@ -73,7 +77,7 @@ const Gif = ({ gif, hover = true, onClick }) => {
                   e.stopPropagation();
                   copyToClipboard(gif.embed_url);
                 }}
-                className='z-30'
+                className='z-30 transition-transform duration-300 hover:scale-110'
               >
                 <LinkIcon size={20} />
               </button>

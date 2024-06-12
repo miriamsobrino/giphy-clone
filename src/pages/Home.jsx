@@ -31,7 +31,10 @@ const Home = () => {
   };
   return (
     <section>
-      <img src='https://media.giphy.com/headers/2022-06-01-21-1654089664/PRIDE_BANNER_HP.gif'></img>
+      <img
+        className='w-full'
+        src='https://media.giphy.com/headers/2022-06-01-21-1654089664/PRIDE_BANNER_HP.gif'
+      ></img>
       <FiltersGif showTrending />
       <div className=' gap-2 columns-2 md:columns-3 lg:columns-4 xl:columns-4  '>
         {gifs.map((gif) => (
