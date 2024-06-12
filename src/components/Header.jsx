@@ -78,7 +78,7 @@ const Header = () => {
             <EllipsisVertical />
           </button>
           <Link to='/favorites' className='gradient-1 p-1 rounded-sm '>
-            <button className='bg-background p-2 font-bold text-base hover:gradient-1 flex gap-2 items-center scale-1 hover:scale-4'>
+            <button className='bg-background p-2 font-bold text-base hover:gradient-1 flex gap-2 items-center '>
               <Heart size={20} fill={'currentColor'} />
               Favorites
             </button>
