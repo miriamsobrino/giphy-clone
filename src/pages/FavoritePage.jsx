@@ -12,7 +12,7 @@ const FavoritePage = () => {
   return (
     <div className='flex-col flex gap-2 mt-4'>
       <span className='font-bold text-gray-300 opacity-80'>My Favorites</span>
-      <div className='colums-2 md:columns-3 lg:columns-4'>
+      <div className='columns-2 md:columns-3 lg:columns-4'>
         {favorites.map((favoriteGif) => (
           <Gif
             onClick={handleGifClick}

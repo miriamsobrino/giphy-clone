@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { AlignRight } from 'lucide-react';
-import { EllipsisVertical } from 'lucide-react';
+import { AlignRight, EllipsisVertical, Heart } from 'lucide-react';
 import { GifState } from '../context/context';
 import SearchGif from './SearchGif';
 import { useParams } from 'react-router-dom';
@@ -78,9 +77,10 @@ const Header = () => {
           >
             <EllipsisVertical />
           </button>
-          <Link to='/favorites' className='gradient-1 p-1 rounded-sm'>
-            <button className='bg-background p-2 font-bold text-base hover:gradient-1 '>
-              Favorite GIFs
+          <Link to='/favorites' className='gradient-1 p-1 rounded-sm '>
+            <button className='bg-background p-2 font-bold text-base hover:gradient-1 flex gap-2 items-center'>
+              <Heart size={20} fill={'currentColor'} />
+              Favorites
             </button>
           </Link>
           <button onClick={toggleCategoriesMobile} className='lg:hidden '>

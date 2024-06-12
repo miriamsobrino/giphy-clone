@@ -59,7 +59,14 @@ const Gif = ({ gif, hover = true, onClick }) => {
                   addToFavorites(gif);
                 }}
               >
-                <Heart size={20} />
+                <Heart
+                  size={20}
+                  fill={
+                    favorites.some((favoriteGif) => favoriteGif.id === gif.id)
+                      ? 'currentColor'
+                      : 'none'
+                  }
+                />
               </button>
               <button
                 onClick={(e) => {
