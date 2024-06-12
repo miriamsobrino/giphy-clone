@@ -2,6 +2,7 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import AppLayout from './layouts/AppLayout';
 import Home from './pages/Home';
+import FavoritePage from './pages/FavoritePage';
 import SearchPage from './pages/SearchPage';
 import CategoryPage from './pages/CategoryPage';
 import GifPage from './pages/GifPage';
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
         {
           path: '/:category',
           element: <CategoryPage />,
+        },
+        {
+          path: '/favorites',
+          element: <FavoritePage />,
         },
         {
           path: '/:type/:slug',

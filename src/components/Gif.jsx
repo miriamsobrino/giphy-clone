@@ -1,21 +1,46 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, LinkIcon } from 'lucide-react';
+import { GifState } from '../context/context';
 
 const Gif = ({ gif, hover = true, onClick }) => {
-  const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert('Copied to clipboard:', text);
-      })
-      .catch((err) => {
-        alert('Failed to copy:', err);
-      });
+  const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
+  const { favorites, setFavorites } = GifState();
+
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setMessage('Link copied to clipboard!');
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 3000);
+    } catch (err) {
+      setShowMessage(false);
+    }
+  };
+
+  const addToFavorites = (gifToAdd) => {
+    const isAlreadyFavorite = favorites.some(
+      (favGif) => favGif.id === gifToAdd.id
+    );
+    if (isAlreadyFavorite) {
+      const updatedFavorites = favorites.filter(
+        (favGif) => favGif.id !== gifToAdd.id
+      );
+      setFavorites(updatedFavorites);
+    } else {
+      setFavorites([...favorites, gifToAdd]);
+    }
   };
 
   return (
     <div className='w-full'>
+      {showMessage && (
+        <div className='fixed top-0 left-0 right-0 p-4 gradient-0 text-center text-base font-bold z-50'>
+          {message}
+        </div>
+      )}
       <div
         className='w-full relative cursor-pointer group'
         onClick={() => onClick(gif)}
@@ -28,7 +53,12 @@ const Gif = ({ gif, hover = true, onClick }) => {
         {hover && (
           <div>
             <div className='absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 z-20'>
-              <button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addToFavorites(gif);
+                }}
+              >
                 <Heart size={20} />
               </button>
               <button

@@ -72,7 +72,7 @@ const SearchPage = () => {
             <span className='font-bold cursor-pointer'>Sort</span>
           </button>
           {isSortMenuOpen && (
-            <div className='w-60 bg-neutral-700 absolute top-12 right-0 rounded-md flex flex-col gap-2 p-4'>
+            <div className='w-60 bg-neutral-700 absolute top-12 right-0 rounded-md flex flex-col gap-2 p-4 z-20'>
               <label className='block font-semibold mb-2 text-md'>
                 Sort Content By
               </label>
@@ -102,7 +102,7 @@ const SearchPage = () => {
         </div>
       </div>
       <FiltersGif />
-      <div className=' gap-2 columns-2 md:columns-3 lg:columns-4 xl:columns-4'>
+      <div className=' gap-2 columns-2 md:columns-3 lg:columns-4 xl:columns-4 z-10'>
         {searchResults.map((gif) => (
           <Gif onClick={handleGifClick} gif={gif} key={gif.id} />
         ))}

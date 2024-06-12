@@ -4,7 +4,10 @@
 
 @layer utilities {
   .gradient-0 {
-    @apply bg-gradient-to-r from-sky-500 to-sky-800 transition-all duration-300;
+    @apply bg-gradient-to-r from-sky-500 to-sky-800;
+  }
+  .gradient-1 {
+    @apply bg-gradient-to-r from-teal-400 via-emerald-400 to-green-300;
   }
   .gradient-2 {
     @apply bg-gradient-to-r from-fuchsia-500 to-purple-700;

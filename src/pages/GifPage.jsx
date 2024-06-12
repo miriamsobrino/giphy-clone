@@ -19,8 +19,10 @@ const GifPage = () => {
   const [gif, setGif] = useState({});
   const [relatedGifs, setRelatedGifs] = useState([]);
   const [readMore, setReadMore] = useState(false);
+  const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
-  const { gf, gifs } = GifState();
+  const { gf, gifs, favorites, setFavorites } = GifState();
   const navigate = useNavigate();
 
   const fetchGif = async () => {
@@ -63,20 +65,38 @@ const GifPage = () => {
     navigate(`/${gif.type}s/${gif.slug}`);
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert('Copied to clipboard:', text);
-      })
-      .catch((err) => {
-        alert('Failed to copy:', err);
-      });
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setMessage('Link copied to clipboard!');
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 3000);
+    } catch (err) {
+      setShowMessage(false);
+    }
   };
 
+  const addToFavorites = (gifToAdd) => {
+    const isAlreadyFavorite = favorites.some(
+      (favGif) => favGif.id === gifToAdd.id
+    );
+    if (isAlreadyFavorite) {
+      const updatedFavorites = favorites.filter(
+        (favGif) => favGif.id !== gifToAdd.id
+      );
+      setFavorites(updatedFavorites);
+    } else {
+      setFavorites([...favorites, gifToAdd]);
+    }
+  };
   return (
-    <div className='mt-6 '>
+    <div className='mt-6  '>
       <div className=' lg:flex gap-9 '>
+        {showMessage && (
+          <div className='fixed top-0 left-0 right-0 p-4 gradient-0 text-center text-base font-bold z-50'>
+            {message}
+          </div>
+        )}
         <div className='flex items-start justify-between gap-9 w-full lg:w-60 lg:flex-col lg:items-start lg:gap-6 lg:justify-start'>
           {gif.user && (
             <div className='mb-8 flex-col lg:flex gap-2 w-60 '>
@@ -180,7 +200,10 @@ const GifPage = () => {
                 </button>
               </div>
               <div className=' flex items-start gap-9 justify-center lg:flex-col lg:gap-6 mb-4'>
-                <div className='flex gap-2 transform transition-transform duration-300 hover:scale-110 cursor-pointer'>
+                <div
+                  onClick={() => addToFavorites(gif)}
+                  className='flex gap-2 transform transition-transform duration-300 hover:scale-110 cursor-pointer'
+                >
                   <img src='/giphy-clone/favorite.svg' />
                   <span className='font-bold text-gray-300 '>Favorite</span>
                 </div>

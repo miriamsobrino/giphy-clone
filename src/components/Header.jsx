@@ -52,11 +52,11 @@ const Header = () => {
   };
 
   return (
-    <header className='sticky top-0 z-50 pt-2 bg-background'>
+    <header className='sticky top-0 z-30 pt-2 bg-background'>
       <nav className='relative flex justify-between items-center text-left  mb-4'>
         <div>
           <Link to='/' className='flex gap-2 cursor-pointer'>
-            <img className='w-8' src='./logo.svg' alt='Logo' />
+            <img className='w-8' src='/giphy-clone/logo.svg' alt='Logo' />
             <h1 className='text-5xl font-bold'>GIPHY</h1>
           </Link>
         </div>
@@ -78,7 +78,11 @@ const Header = () => {
           >
             <EllipsisVertical />
           </button>
-
+          <Link to='/favorites' className='gradient-1 p-1 rounded-sm'>
+            <button className='bg-background p-2 font-bold text-base hover:gradient-1 '>
+              Favorite GIFs
+            </button>
+          </Link>
           <button onClick={toggleCategoriesMobile} className='lg:hidden '>
             <AlignRight className='text-sky-500' />
           </button>
