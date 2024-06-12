@@ -1,5 +1,5 @@
 import './App.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import AppLayout from './layouts/AppLayout';
 import Home from './pages/Home';
 import FavoritePage from './pages/FavoritePage';
@@ -7,8 +7,9 @@ import SearchPage from './pages/SearchPage';
 import CategoryPage from './pages/CategoryPage';
 import GifPage from './pages/GifPage';
 import GifProvider from './context/context';
+import { Hash } from 'lucide-react';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       element: <AppLayout />,
